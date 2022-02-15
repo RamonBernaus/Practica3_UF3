@@ -1,0 +1,7 @@
+|Posició | Inici | Longitud | Descripció   |
+|   1    |   1   |    6     |Codi          |
+|   2    |   7   |   20     |Nom           |
+|   3    |  27   |   30     |Cognoms       |
+|   4    |  57   |    8     |Data naix.    |
+|   5    |  65   |   40     |Adreça postal |
+|   6    | 105   |   30     |E-mail        |
