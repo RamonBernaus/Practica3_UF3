@@ -50,7 +50,7 @@ public class Ex1 {
                 } else {
                     comprovar = true;
                     //Si no ho es segueix i ens ho registra en el arxiu
-                    /*File_print(linea); //amb el file print*/
+                    File_print(linea); //amb el file print
                 }
             } catch (Exception e) {
                 e.printStackTrace();
