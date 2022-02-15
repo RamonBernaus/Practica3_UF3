@@ -20,9 +20,15 @@ import java.io.PrintWriter;
 public class Ex1 {
 
     public static void main(String[] args) throws IOException {
+        CrearFile();
         OmplirFile();
+        
     }
-    
+    public static File CrearFile() throws IOException{
+        File arxiu = new File("./arxiu.txt");
+        arxiu.createNewFile();
+        return arxiu;
+    }
     public static FileWriter OmplirFile(){
         FileWriter arxiu = null;
         PrintWriter pw = null;
