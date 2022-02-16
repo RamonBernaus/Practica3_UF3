@@ -31,11 +31,7 @@ public class Ex1 {
     public static void main(String[] args) throws IOException {
         CrearFile();
         OmplirFile();
-        Nom();
-        Cognom();
-        Data_naix();
-        Lector();
-        
+
     }
 
     public static File CrearFile() throws IOException {
@@ -50,20 +46,12 @@ public class Ex1 {
         try {
             write = new FileWriter("arxiu.txt");
             pw = new PrintWriter(write);
-
-            pw.println("|Posició | Inici | Longitud | Descripció   |");
-            pw.println("|   1    |   1   |    6     |Codi          |");
-            pw.println("|                                          |");
-            pw.println("|   2    |   7   |   20     |Nom           |");
-            pw.println("|                                          |");
-            pw.println("|   3    |  27   |   30     |Cognoms       |");
-            pw.println("|                                          |");
-            pw.println("|   4    |  57   |    8     |Data naix.    |");
-            pw.println("|                                          |");
-            pw.println("|   5    |  65   |   40     |Adreça postal |");
-            pw.println("|                                          |");
-            pw.println("|   6    | 105   |   30     |E-mail        |");
-            pw.println("|                                          |");
+            pw.println("1 " + Codi());
+            pw.println("2 " + Nom());
+            pw.println("3 " + Cognom());
+            pw.println("4 " + Data_naix());
+            pw.println("5 " + Address());
+            pw.println("6 " + Email());
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -78,22 +66,16 @@ public class Ex1 {
         return write;
     }
 
-    public static FileWriter Client(FileWriter write) throws IOException {
-        write = new FileWriter("arxiu.txt");
-        PrintWriter pw = new PrintWriter(write);
-
-        return write;
-    }
-
-    public static long Codi() throws FileNotFoundException {
+    public static int Codi() throws FileNotFoundException, IOException {
         File arxiu = new File("arxiu.txt");
-        FileOutputStream Fs = new FileOutputStream(arxiu);
-        DataOutputStream Ds = new DataOutputStream(Fs);
-        Scanner s = new Scanner(System.in);
-        long Codi = 6;
-        float codi_escrit;
-        codi_escrit = 1234;
-        return Codi;
+        String file = "arxiu.txt";
+        FileWriter fw = new FileWriter(file, true);
+        int Codi = 123;
+        if (Codi < 999999) {
+            return Codi;
+        } else {
+            return 0;
+        }
     }
 
     public static String Nom() {
@@ -109,6 +91,7 @@ public class Ex1 {
         }
         return line;
     }
+
     public static String Cognom() {
         String line = null;
         try {
@@ -122,10 +105,10 @@ public class Ex1 {
         }
         return line;
     }
-    
-    public static String Data_naix(){
-        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy");
-        Date data = new Date("09/08/1999");
+
+    public static String Data_naix() {
+        DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
+        Date data = new Date("09/08/1999 ");
         String dateToStr = null;
         try {
             String file = "arxiu.txt";
@@ -138,35 +121,49 @@ public class Ex1 {
         }
         return dateToStr;
     }
-    
-    public static String Address(){
+
+    public static String Address() {
         String line = null;
         try {
             String file = "arxiu.txt";
             FileWriter fw = new FileWriter(file, true);
-            line = "Carrer de Manuel Ballbé ";
+            line = "Carrer de Manuel Ballbé, 5, Barcelona ";
             fw.write(line);
             fw.close();
         } catch (Exception e) {
             System.out.println(e);
         }
-        return line;      
+        return line;
+    }
+
+    public static String Email() {
+        String line = null;
+        try {
+            String file = "arxiu.txt";
+            FileWriter fw = new FileWriter(file, true);
+            line = "pacofernandez@gmail.com ";
+            fw.write(line);
+            fw.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return line;
     }
 
     public static String Lector() throws IOException {
-        int x = 13;
-        String linea;
+        int x = 1;
+        String linea = "paco";
+        File arxiu = new File("arxiu.txt");
         FileReader fr = new FileReader("arxiu.txt");
         BufferedReader bf = new BufferedReader(fr);
-        Scanner s = new Scanner(System.in);
+        FileWriter fw = new FileWriter(arxiu, true);
 
         long numero_lin = 0;
         while ((linea = bf.readLine()) != null) {
             if (numero_lin == x) {
-                System.out.println(linea);
+                fw.write(linea);
+                fw.close();
                 return linea;
-            } else if (numero_lin > x) {
-                linea = "El numero es massa gran";
             } else {
                 numero_lin++;
             }
