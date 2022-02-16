@@ -70,7 +70,7 @@ public class Ex1 {
         File arxiu = new File("arxiu.txt");
         String file = "arxiu.txt";
         FileWriter fw = new FileWriter(file, true);
-        int Codi = 123;
+        int Codi = 123456;
         if (Codi < 999999) {
             return Codi;
         } else {
