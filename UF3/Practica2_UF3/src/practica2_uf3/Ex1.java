@@ -9,10 +9,8 @@ f) Llistat de tots els clients*/
 package practica2_uf3;
 
 import java.io.BufferedReader;
-import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -31,11 +29,14 @@ public class Ex1 {
     public static void main(String[] args) throws IOException {
         CrearFile();
         Codi();
-        Nom();
+        Nom("Paco ");
         Cognom();
         Data_naix();
         Address();
         Email();
+        Separacio();
+        Nom("Pol ");
+        ClientPosicio();
 
     }
 
@@ -52,7 +53,6 @@ public class Ex1 {
             write = new FileWriter("arxiu.txt");
             pw = new PrintWriter(write);
             pw.println("1 " + Codi());
-            pw.println("2 " + Nom());
             pw.println("3 " + Cognom());
             pw.println("4 " + Data_naix());
             pw.println("5 " + Address());
@@ -83,18 +83,16 @@ public class Ex1 {
         }
     }
 
-    public static String Nom() {
-        String line = null;
+    public static String Nom(String nom) {
         try {
             String file = "arxiu.txt";
             FileWriter fw = new FileWriter(file, true);
-            line = "Paco ";
-            fw.write(line);
+            fw.write(nom);
             fw.close();
         } catch (Exception e) {
             System.out.println(e);
         }
-        return line;
+        return nom;
     }
 
     public static String Cognom() {
@@ -154,26 +152,59 @@ public class Ex1 {
         }
         return line;
     }
+    public static FileWriter Separacio(){
+        FileWriter write = null;
+        PrintWriter pw = null;
+        try {
+            write = new FileWriter("arxiu.txt");
+            pw = new PrintWriter(write);
+            String file = "arxiu.txt";
+            FileWriter fw = new FileWriter(file, true);
+            pw.println("");
+            fw.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return write;
+    }
+    
 
-    public static String Lector() throws IOException {
-        int x = 1;
-        String linea = "paco";
+    public static String ClientPosicio() throws IOException {
+        int x = 0;
+        String linea;
         File arxiu = new File("arxiu.txt");
         FileReader fr = new FileReader("arxiu.txt");
         BufferedReader bf = new BufferedReader(fr);
-        FileWriter fw = new FileWriter(arxiu, true);
-
         long numero_lin = 0;
         while ((linea = bf.readLine()) != null) {
             if (numero_lin == x) {
-                fw.write(linea);
-                fw.close();
-                return linea;
+                System.out.println(linea);
             } else {
                 numero_lin++;
             }
         }
-
         return linea;
     }
 }
+
+/*    public static String Lector() throws IOException {
+    int x = 1;
+    String linea = "paco";
+    File arxiu = new File("arxiu.txt");
+    FileReader fr = new FileReader("arxiu.txt");
+    BufferedReader bf = new BufferedReader(fr);
+    FileWriter fw = new FileWriter(arxiu, true);
+    
+    long numero_lin = 0;
+    while ((linea = bf.readLine()) != null) {
+    if (numero_lin == x) {
+    fw.write(linea);
+    fw.close();
+    return linea;
+    } else {
+    numero_lin++;
+    }
+    }
+    
+    return linea;
+    }*/
