@@ -30,7 +30,12 @@ public class Ex1 {
 
     public static void main(String[] args) throws IOException {
         CrearFile();
-        OmplirFile();
+        Codi();
+        Nom();
+        Cognom();
+        Data_naix();
+        Address();
+        Email();
 
     }
 
