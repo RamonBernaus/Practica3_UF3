@@ -18,7 +18,6 @@ import java.io.PrintWriter;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
-import java.util.Scanner;
 
 /**
  *
@@ -50,17 +49,24 @@ public class Ex1 {
     public static FileWriter OmplirFile() {
         FileWriter write = null;
         PrintWriter pw = null;
-        String nom1;
+        String nom1, nom2;
+        int Codi1, Codi2;
+        String Cognom1, Cognom2;
+        Date Data1, Data2;
+        String Address1, Address2;
+        String Email1, Email2;
         try {
+            DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
             write = new FileWriter("arxiu.txt");
             pw = new PrintWriter(write);
             nom1 = " Paco ";
+            nom2 = " Pol ";
+            Codi1 = 123456;
+            Codi2 = 234567;
             
-            pw.println("1 " + Codi() + Nom(nom1) + Cognom() + Data_naix() + Address() + Email());
-            /*pw.println("3 " + Cognom());
-            pw.println("4 " + Data_naix());
-            pw.println("5 " + Address());
-            pw.println("6 " + Email());*/
+                     
+            pw.println("1 " + Codi(Codi1) + Nom(nom1) + Cognom(Cognom1) + Data_naix(Data1) + Address(Address1) + Email(Email1));
+            pw.println("2 " + Codi(Codi2) + Nom(nom2) + Cognom(Cognom2) + Data_naix(Data2) + Address(Address2) + Email(Email2));
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -75,11 +81,11 @@ public class Ex1 {
         return write;
     }
 
-    public static int Codi() throws FileNotFoundException, IOException {
+    public static int Codi(int Codi) throws FileNotFoundException, IOException {
         File arxiu = new File("arxiu.txt");
         String file = "arxiu.txt";
         FileWriter fw = new FileWriter(file, true);
-        int Codi = 123456;
+        Codi = 123456;
         if (Codi < 999999) {
             return Codi;
         } else {
@@ -99,23 +105,22 @@ public class Ex1 {
         return nom;
     }
 
-    public static String Cognom() {
-        String line = null;
+    public static String Cognom(String Cognom) {       
         try {
             String file = "arxiu.txt";
             FileWriter fw = new FileWriter(file, true);
-            line = "Fernandez ";
-            fw.write(line);
+            Cognom = "Fernandez ";
+            fw.write(Cognom);
             fw.close();
         } catch (Exception e) {
             System.out.println(e);
         }
-        return line;
+        return Cognom;
     }
 
-    public static String Data_naix() {
+    public static String Data_naix(Date data) {
         DateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy ");
-        Date data = new Date("09/08/1999 ");
+        data = new Date("09/08/1999 ");
         String dateToStr = null;
         try {
             String file = "arxiu.txt";
@@ -129,32 +134,30 @@ public class Ex1 {
         return dateToStr;
     }
 
-    public static String Address() {
-        String line = null;
+    public static String Address(String Address) {      
         try {
             String file = "arxiu.txt";
             FileWriter fw = new FileWriter(file, true);
-            line = "Carrer de Manuel Ballbé, 5, Barcelona ";
-            fw.write(line);
+            Address = "Carrer de Manuel Ballbé, 5, Barcelona ";
+            fw.write(Address);
             fw.close();
         } catch (Exception e) {
             System.out.println(e);
         }
-        return line;
+        return Address;
     }
 
-    public static String Email() {
-        String line = null;
+    public static String Email(String Email) {
         try {
             String file = "arxiu.txt";
             FileWriter fw = new FileWriter(file, true);
-            line = "pacofernandez@gmail.com ";
-            fw.write(line);
+            Email = "pacofernandez@gmail.com ";
+            fw.write(Email);
             fw.close();
         } catch (Exception e) {
             System.out.println(e);
         }
-        return line;
+        return Email;
     }
     /*    public static FileWriter Separacio(){
     FileWriter write = null;
