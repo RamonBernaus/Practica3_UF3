@@ -27,16 +27,17 @@ import java.util.Scanner;
 public class Ex1 {
 
     public static void main(String[] args) throws IOException {
-        CrearFile();
+        /*        CrearFile();
         Codi();
         Nom("Paco ");
         Cognom();
         Data_naix();
         Address();
         Email();
-        Separacio();
         Nom("Pol ");
-        ClientPosicio();
+        ClientPosicio()*/
+        CrearFile();
+        OmplirFile();
 
     }
 
@@ -49,14 +50,17 @@ public class Ex1 {
     public static FileWriter OmplirFile() {
         FileWriter write = null;
         PrintWriter pw = null;
+        String nom1;
         try {
             write = new FileWriter("arxiu.txt");
             pw = new PrintWriter(write);
-            pw.println("1 " + Codi());
-            pw.println("3 " + Cognom());
+            nom1 = " Paco ";
+            
+            pw.println("1 " + Codi() + Nom(nom1) + Cognom() + Data_naix() + Address() + Email());
+            /*pw.println("3 " + Cognom());
             pw.println("4 " + Data_naix());
             pw.println("5 " + Address());
-            pw.println("6 " + Email());
+            pw.println("6 " + Email());*/
 
         } catch (Exception e) {
             e.printStackTrace();
@@ -152,21 +156,21 @@ public class Ex1 {
         }
         return line;
     }
-    public static FileWriter Separacio(){
-        FileWriter write = null;
-        PrintWriter pw = null;
-        try {
-            write = new FileWriter("arxiu.txt");
-            pw = new PrintWriter(write);
-            String file = "arxiu.txt";
-            FileWriter fw = new FileWriter(file, true);
-            pw.println("");
-            fw.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-        return write;
+    /*    public static FileWriter Separacio(){
+    FileWriter write = null;
+    PrintWriter pw = null;
+    try {
+    write = new FileWriter("arxiu.txt");
+    pw = new PrintWriter(write);
+    String file = "arxiu.txt";
+    FileWriter fw = new FileWriter(file, true);
+    pw.println("");
+    fw.close();
+    } catch (Exception e) {
+    System.out.println(e);
     }
+    return write;
+    }*/
     
 
     public static String ClientPosicio() throws IOException {
