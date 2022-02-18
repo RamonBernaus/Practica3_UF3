@@ -42,9 +42,9 @@ public class Practica3_UF3 {
         File numeros = new File ();
         FileOutputStream fos = new FileOutputStream (numero);
         DataOutputStream dos = new DataOutputStream (fos);
-        long num1 ;
-        os.write(i);
-        os.flush();
-        os.close();
+        long num1 = i;       
+        dos.writeLong(num1);
+        dos.flush();
+        dos.close();
 }
 }
